@@ -98,6 +98,8 @@ if ($resultado_id) {
 
 								// para que o tweet recém-postado já apareça na timeline sem precisar dar refresh, podemos chamar a função aqui
 								atualizaTweet();
+
+								atualizaQtdeTweet();
 							}
 						});
 					}
@@ -134,6 +136,8 @@ if ($resultado_id) {
 								});
 
 								atualizaTweet();
+								atualizaQtdeTweet();
+
 							});
 						}
 					});
@@ -141,8 +145,22 @@ if ($resultado_id) {
 
 				}
 
+				// atualiza qtde tweets
+				function atualizaQtdeTweet() {
+
+					$.ajax({
+
+						url: 'qtde_tweets.php',
+						success: function(data) {
+
+							$('#qtde_tweets').html(data);
+						}
+					})
+				}
+
 				// executa a função
 				atualizaTweet();
+				atualizaQtdeTweet();
 
 			});
 
@@ -189,7 +207,7 @@ if ($resultado_id) {
 
 	    				<hr>
 
-	    				<div class="col-md-6">
+	    				<div class="col-md-6" id="qtde_tweets">
 	    					TWEETS <br> <!-- é impresso o valor da variavel qtde_tweets -->
 	    					<?=$qtde_tweets?>
 

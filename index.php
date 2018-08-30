@@ -4,6 +4,8 @@
 // verifica se existe o erro através de um if ternário
 $erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
 
+// verifica se o usuário não estava vindo de um logoff
+$logoff = isset($_GET['logoff']) ? $_GET['logoff'] : 0;
 ?>
 
 
@@ -113,9 +115,16 @@ if ($erro == 1) {
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
-	    </nav>
+	    </nav> <br><br><br>
 
+	    <!--verifica se o usuário não estava vindo de um logoff-->
+	    <?php
+if ($logoff == 1) {
+    echo "<div class='container'><div class='jumbotron'><h3>Esperamos você de volta em breve !!!</h3></div></div>";
+}
 
+?>
+		<br><br><br>
 	    <div class="container">
 
 	      <!-- Main component for a primary marketing message or call to action -->

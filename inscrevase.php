@@ -1,8 +1,9 @@
 <?php
 
-// recuperando os erros
+// recuperando os erros ou sucesso
 $erro_usuario = isset($_GET['erro_usuario']) ? $_GET['erro_usuario'] : 0;
 $erro_email   = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
+$cad_sucesso  = isset($_GET['success']) ? $_GET['success'] : 0;
 
 ?>
 
@@ -84,7 +85,15 @@ if ($erro_email == 1) {
 						<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="requiored">
 					</div>
 
-					<button type="submit" class="btn btn-primary form-control">Inscreva-se</button>
+					<button type="submit" class="btn btn-primary form-control">Inscreva-se</button> <br><br>
+					<?php
+
+if ($cad_sucesso == 1) {
+    echo "<font style='color:#088A29'>Usuário cadastrado com sucesso !</font>";
+}
+
+?>
+
 				</form>
 			</div>
 			<div class="col-md-4"></div>

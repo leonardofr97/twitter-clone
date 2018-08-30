@@ -105,7 +105,10 @@ $sql = " insert into usuarios (usuario, email, senha) values ('$usuario', '$emai
 
 // executar a query ( mysqli_query(o link de conexão com o bd, a query em si) );
 if (mysqli_query($link, $sql)) {
-    echo "Usuário cadastrado com sucesso !";
+    //
+    header('Location: inscrevase.php?success=1');
+
+    //echo "Usuário cadastrado com sucesso !";
 } else {
     echo "Erro ao registrar o usuário !";
 }

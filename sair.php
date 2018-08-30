@@ -6,6 +6,8 @@ session_start();
 unset($_SESSION['usuario']);
 unset($_SESSION['email']);
 
-echo "Esperamos você de volta em breve !!!";
+header('Location:index.php?logoff=1');
+
+//echo "Esperamos você de volta em breve !!!";
 
 ?>
