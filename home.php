@@ -72,6 +72,27 @@ if ($resultado_id) {
 				$('#texto_tweet').click( function(){
 					// ao clicar no campo, a msg de sucesso de um post anterior eh ocultado
 					$('#msg_tweet_post').html('');
+
+					if( $(this).val() == '' ){
+        				// retonando ao height padrão de 34px
+       					$(this).css('height', '34px');
+    				}
+				});
+
+				// aumenta a altura automaticamente conforme digita ou apaga
+				$('#texto_tweet').on('keyup change onpaste', function () {
+    				var alturaScroll = this.scrollHeight;
+    				var alturaCaixa = $(this).height();
+
+    				if (alturaScroll > (alturaCaixa + 10)) {
+        				if (alturaScroll > 500) return;
+        				$(this).css('height', alturaScroll);
+    				}
+
+    				if( $(this).val() == '' ){
+        				// retonando ao height padrão de 34px
+       					$(this).css('height', '34px');
+    				}
 				});
 
 				// associar o evento de click ao botão
@@ -227,7 +248,7 @@ if ($resultado_id) {
 	    				<form id="form_tweet" class="input-group">
 
 	    					<!-- criando um name para uso na função serialize -->
-	    					<input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora ?" maxlength="140">
+	    					<textarea id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora ?" maxlength="140" style="resize: none; height: 34px; overflow-y: hidden;"></textarea>
 
 	    					<span class="input-group-btn">
 	    						<button class="btn btn-default" type="button" id="btn_tweet">Tweet</button>

@@ -19,3 +19,10 @@ Modificações
 - Feita alterações de aparência na página Inscreva-se
 =======
 >>>>>>> ecd740d90bb9e1b2f2c1b2ecc22f7e18328c2b2b
+
+Versão 1.2 - 30/08/2018
+
+Modificações
+
+- Agora o campo do tweet altera sua altura automaticamente ao digitar e apagar o conteúdo
+- Alterações de aparência na timeline

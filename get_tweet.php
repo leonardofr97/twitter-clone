@@ -33,23 +33,23 @@ if ($resultado_id) {
         if ($registro['id_usuario'] == $id_usuario) {
 
             // para cada registro(tweet) é criado um item do list-group da div
-            echo "<a href='#' class='list-group-item'>";
+            echo "<div class='list-group-item'>";
 
             // contendo um cabeçalho onde terá nome do usuário, a data de inclusão do tweet e um botão excluir tweet para os do usuario logado
             echo "<h4 class='list-group-item-heading'>" . $registro['usuario'] . "<small> - " . $registro['data_inclusao_format'] . "</small><button type='button' class='btn btn-default btn-xs btn_del_tweet pull-right' data-id_tweet='" . $registro['id_tweet'] . "'>Excluir Tweet</button></h4>";
 
             // por fim, um paragrafo onde conterá o tweet em si
-            echo "<p class='list-group-item-text'>" . $registro['tweet'] . "</p>";
-            echo "</a>";
+            echo "<p class='list-group-item-text' style='font-size: 17px;'>" . $registro['tweet'] . "</p>";
+            echo "</div><br>";
 
         } else {
 
-            echo "<a href='#' class='list-group-item'>";
+            echo "<div class='list-group-item'>";
 
             echo "<h4 class='list-group-item-heading'>" . $registro['usuario'] . "<small> - " . $registro['data_inclusao_format'] . "</small></h4>";
 
-            echo "<p class='list-group-item-text'>" . $registro['tweet'] . "</p>";
-            echo "</a>";
+            echo "<p class='list-group-item-text' style='font-size: 17px;'>" . $registro['tweet'] . "</p>";
+            echo "</div><br>";
         }
     }
 
