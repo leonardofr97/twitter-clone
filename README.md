@@ -26,3 +26,9 @@ Modificações
 
 - Agora o campo do tweet altera sua altura automaticamente ao digitar e apagar o conteúdo
 - Alterações de aparência na timeline
+
+Versão 1.3 - 01/09/2018
+
+Modificações
+
+- Adicionado uma lista dos seguidores do usuário logado no paínel direito da Home

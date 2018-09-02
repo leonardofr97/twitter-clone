@@ -14,24 +14,6 @@ $link  = $objDb->conecta_mysql();
 
 $id_usuario = $_SESSION['id_usuario'];
 
-// exibir qtde de tweets do usuário logado
-
-// é necessário recuperar a quantidade de registros (tweets) e isso eh feito com o COUNT()
-$sql = " SELECT COUNT(*) AS qtde_tweets FROM tweet WHERE id_usuario = $id_usuario ";
-
-$resultado_id = mysqli_query($link, $sql);
-
-$qtde_tweets = 0;
-
-if ($resultado_id) {
-    $registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC);
-
-    // é atribuido à variavel o indice de $registro que corresponde ao alias da query
-    $qtde_tweets = $registro['qtde_tweets'];
-} else {
-    echo "Erro ao executar a query";
-}
-
 // exibir qtde de seguidores
 
 $sql = " SELECT COUNT(*) AS qtde_seguidores FROM usuarios_seguidores WHERE seguindo_id_usuario = $id_usuario ";
@@ -127,7 +109,16 @@ if ($resultado_id) {
 
 				});
 
+				$.ajax({
+						url: 'get_seguidores.php',
+						success: function(data) {
 
+							// caso requisição foi sucesso, será inserido o retorno da requisição na div tweets
+							$('#seguidores').html(data);
+
+
+						}
+					});
 
 				function atualizaTweet(){
 
@@ -271,6 +262,10 @@ if ($resultado_id) {
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<h4><a href="procurar_pessoas.php">Procurar por pessoas</a></h4>
+						<!-- exibirá a lista de seguidores do user logado -->
+						<div id="seguidores" class="list-group">
+
+						</div>
 					</div>
 				</div>
 			</div>

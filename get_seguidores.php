@@ -13,61 +13,29 @@ $id_usuario = $_SESSION['id_usuario'];
 $objDb = new db();
 $link  = $objDb->conecta_mysql();
 
-$sql = " SELECT u.*, us.*
-FROM usuarios AS u
-LEFT JOIN usuarios_seguidores AS us
-ON ( us.id_usuario = $id_usuario AND u.id = us.seguindo_id_usuario )
-WHERE u.id <> $id_usuario ";
+// consulta que retorna os seguidores do usuario logado
+$sql = " SELECT u.*, us.* FROM usuarios AS u
+         LEFT JOIN usuarios_seguidores AS us
+         ON ( u.id = us.id_usuario )
+         WHERE us.seguindo_id_usuario = $id_usuario ";
 
 $resultado_id = mysqli_query($link, $sql);
 
 if ($resultado_id) {
 
+    echo "<br><h4>Seguidores</h4><br>";
     // é usada a forma de guardar vários registros do BD em array com a função mysqli
     while ($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)) {
 
-        if ($registro['seguindo_id_usuario'] == $id_usuario) {
+        // para cada registro(usuário) é criado um item do list-group da div
+        echo "<a href='#' class='list-group-item'>";
 
-            // para cada registro(usuário) é criado um item do list-group da div
-            echo "<a href='#' class='list-group-item'>";
+        // será exibido o nome e o email do usuario
+        echo "<strong>" . $registro['usuario'] . "</strong><br> <small> " . $registro['email'] . "</small>";
 
-            // será exibido o nome e o email do usuario
-            echo "<strong>" . $registro['usuario'] . "</strong> <br><small>" . $registro['email'] . "</small><br><br>";
-
-            // cria um botão de seguir que flutuará a direita com o pull-right
-            echo "<p class='list-group-item-text pull-right'>";
-
-            // verificamos se o usuario contém o campo id_usuario_seguidor, ou seja se esta sendo seguido
-            $esta_seguindo_usuario_sn = isset($registro['id_usuario_seguidor']) && !empty($registro['id_usuario_seguidor']) ? 'S' : 'N';
-
-            // variáveis auxiliares
-            $btn_seguir_display        = 'block';
-            $btn_deixar_seguir_display = 'block';
-
-            // caso não estiver seguindo o botão deixar seguir recebe display:none (eh ocultado)
-            if ($esta_seguindo_usuario_sn == 'N') {
-                $btn_deixar_seguir_display = 'none';
-            }
-
-            // caso contrário, se for 'S', o botão seguir que será ocultado
-            else {
-                $btn_seguir_display = 'none';
-            }
-
-            // precisamos de um id pros botões que seja único para cada botao de cada usuário, podemos então concatenar o id do botão com o id do usuário já que o msm é uma informação única
-
-            // criando um atributo personalizado em html com o prefixo 'data-' que irá recuperar o id do usuário que deseja seguir
-            echo "<button type='button' id='btn_seguir_" . $registro['id'] . "' style='display: " . $btn_seguir_display . "' class='btn btn-default btn_seguir' data-id_usuario='" . $registro['id'] . "'>Seguir</button>";
-
-            // os botões serão exibidos ou não de acordo com o valor da variavel $btn_seguir_display e $btn_deixar_seguir_display
-            echo "<button type='button' id='btn_deixar_seguir_" . $registro['id'] . "' style='display: " . $btn_deixar_seguir_display . "' class='btn btn-primary btn_deixar_seguir' data-id_usuario='" . $registro['id'] . "'>Deixar de Seguir</button>";
-            echo "</p>";
-
-            // clearfix para corrigir o espaçamento do botão
-            echo "<div class='clearfix'></div>";
-            echo "</a>";
-
-        }
+        // clearfix para corrigir o espaçamento do botão
+        echo "<div class='clearfix'></div>";
+        echo "</a><br>";
     }
 
 } else {
