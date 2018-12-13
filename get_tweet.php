@@ -39,7 +39,7 @@ if ($resultado_id) {
             echo "<h4 class='list-group-item-heading'>" . $registro['usuario'] . "<small> - " . $registro['data_inclusao_format'] . "</small><button type='button' class='btn btn-default btn-xs btn_del_tweet pull-right' data-id_tweet='" . $registro['id_tweet'] . "'>Excluir Tweet</button></h4>";
 
             // por fim, um paragrafo onde conterá o tweet em si
-            echo "<p class='list-group-item-text' style='font-size: 17px;'>" . $registro['tweet'] . "</p>";
+            echo "<p class='list-group-item-text' style='font-size: 17px; word-wrap: break-word;'>" . $registro['tweet'] . "</p>";
             echo "</div><br>";
 
         } else {

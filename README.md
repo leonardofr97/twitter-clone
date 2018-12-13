@@ -32,3 +32,9 @@ Versão 1.3 - 01/09/2018
 Modificações
 
 - Adicionado uma lista dos seguidores do usuário logado no paínel direito da Home
+
+Versão 1.4 - 13/12/2018
+
+Modificações
+
+- Corrigido bug na exibição dos tweets
