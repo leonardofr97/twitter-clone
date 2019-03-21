@@ -1,5 +1,5 @@
-# projeto-twitter-clone
-Projeto Twitter Clone com PHP e MySql
+# twitter-clone
+Twitter Clone com PHP e MySql
 
 Projeto feito durante o curso Dev Web, com alterações feitas por mim, algumas já presentes na importação inicial do projeto
 
