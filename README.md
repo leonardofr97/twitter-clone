@@ -3,6 +3,8 @@ Twitter Clone com PHP e MySql
 
 Projeto feito durante o curso Dev Web, com alterações feitas por mim, algumas já presentes na importação inicial do projeto
 
+Link para visualização: https://tw-clone.000webhostapp.com/
+
 Versão inicial
 
 Modificações
